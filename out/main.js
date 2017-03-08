@@ -13,7 +13,7 @@ var planeMaterial = new THREE.MeshPhongMaterial({ color: 0x777777, side: THREE.D
 planeMaterial.shading = THREE.FlatShading;
 var floor = new THREE.Mesh(planeGeometry, planeMaterial);
 floor.receiveShadow = true;
-scene.add(floor);
+// scene.add( floor );
 var light = new THREE.PointLight(0xffffff, 1, 100);
 light.position.set(0, -35, 10);
 light.castShadow = true;
@@ -26,10 +26,8 @@ rings.push(new Ring(100, 30));
 rings.push(new Ring(80, 25));
 rings.push(new Ring(60, 20));
 function draw() {
-    for (var _i = 0; _i < rings.length; _i++) {
-        var ring = rings[_i];
+    for (var ring of rings)
         ring.update();
-    }
 }
 var render = function () {
     requestAnimationFrame(render);
@@ -37,4 +35,32 @@ var render = function () {
     renderer.render(scene, camera);
 };
 render();
+quikSort([5, 5, 1, 3, 66, 8, 9, 4, 5, 7, 2, 5, 4, 9]);
+function quikSort(array) {
+    quikSortPr(array, 0, array.length - 1);
+}
+function quikSortPr(array, low, high) {
+    if (low >= high)
+        return;
+    var pivot = array[Math.floor((low + high) / 2)];
+    var wall = partition(array, low, high, pivot);
+    quikSortPr(array, low, wall - 1);
+    quikSortPr(array, wall, high);
+}
+function partition(array, low, high, pivot) {
+    var left = low;
+    var right = high;
+    while (left <= right) {
+        while (array[left] < pivot)
+            left++;
+        while (array[right] > pivot)
+            right--;
+        if (left <= right) {
+            swap(array, left, right);
+            left++;
+            right--;
+        }
+    }
+    return left;
+}
 //# sourceMappingURL=main.js.map

@@ -52,7 +52,7 @@ class Ring{
                 this.writeCompletion = 0;
             }
         }else if(this.state == State.writing){
-            this.writeCompletion += 0.02;
+            this.writeCompletion += 0.05;
             if(floatEquals(this.writeCompletion, 0.5)){
                 this.bits[mod(Math.round(-this.currentRotation / this.spacing), this.diskSize)].toggle()
             }

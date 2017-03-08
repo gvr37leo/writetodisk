@@ -6,8 +6,8 @@ var State;
     State[State["rolling"] = 0] = "rolling";
     State[State["writing"] = 1] = "writing";
 })(State || (State = {}));
-var Ring = (function () {
-    function Ring(diskSize, radius) {
+class Ring {
+    constructor(diskSize, radius) {
         this.flag = false;
         this.state = State.rolling;
         this.bits = [];
@@ -23,14 +23,13 @@ var Ring = (function () {
         this.targetRotation = this.spacing * 10;
         this.head = new Head(new THREE.Vector3(0, -radius, 3));
     }
-    Ring.prototype.update = function () {
+    update() {
         if (this.state == State.rolling) {
             var step = min(this.rotationSpeed, Math.abs(this.targetRotation - this.currentRotation));
             if (this.targetRotation < this.currentRotation)
                 step = -step;
             this.currentRotation += step;
-            for (var _i = 0, _a = this.bits; _i < _a.length; _i++) {
-                var bit = _a[_i];
+            for (var bit of this.bits) {
                 bit.mesh.position.applyAxisAngle(new THREE.Vector3(0, 0, 1), step);
             }
             if (step == 0) {
@@ -45,7 +44,7 @@ var Ring = (function () {
             }
         }
         else if (this.state == State.writing) {
-            this.writeCompletion += 0.02;
+            this.writeCompletion += 0.05;
             if (floatEquals(this.writeCompletion, 0.5)) {
                 this.bits[mod(Math.round(-this.currentRotation / this.spacing), this.diskSize)].toggle();
             }
@@ -55,7 +54,6 @@ var Ring = (function () {
             if (this.writeCompletion >= 1)
                 this.state = State.rolling;
         }
-    };
-    return Ring;
-})();
+    }
+}
 //# sourceMappingURL=Ring.js.map
