@@ -23,8 +23,8 @@ camera.position.y = -60;
 camera.lookAt(new THREE.Vector3(0, 0, 0));
 var rings = [];
 rings.push(new Ring(100, 30));
-// rings.push(new Ring(80,25))
-// rings.push(new Ring(60,20))
+rings.push(new Ring(80, 25));
+rings.push(new Ring(60, 20));
 function draw() {
     for (var _i = 0; _i < rings.length; _i++) {
         var ring = rings[_i];

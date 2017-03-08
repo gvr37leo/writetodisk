@@ -29,8 +29,8 @@ camera.lookAt(new THREE.Vector3(0,0,0))
 
 var rings:Ring[] = []
 rings.push(new Ring(100,30))
-// rings.push(new Ring(80,25))
-// rings.push(new Ring(60,20))
+rings.push(new Ring(80,25))
+rings.push(new Ring(60,20))
 
 function draw(){
     for(var ring of rings)ring.update();
