@@ -21,5 +21,5 @@ var Bit = (function () {
         this.mesh.material = bitMaterialMap.get(this.state);
     };
     return Bit;
-}());
+})();
 //# sourceMappingURL=Bit.js.map

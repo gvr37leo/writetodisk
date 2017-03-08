@@ -2,6 +2,7 @@
 /// <reference path="Bit.ts" />
 /// <reference path="Ring.ts" />
 /// <reference path="../node_modules/utilsx/utils.js" />
+/// <reference path="../node_modules/@types/three/index.d.ts" />
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 var renderer = new THREE.WebGLRenderer();
@@ -24,10 +25,9 @@ var rings = [];
 rings.push(new Ring(100, 30));
 // rings.push(new Ring(80,25))
 // rings.push(new Ring(60,20))
-rings[0].bits[0].mesh.material = bitMaterialOn;
 function draw() {
-    for (var _i = 0, rings_1 = rings; _i < rings_1.length; _i++) {
-        var ring = rings_1[_i];
+    for (var _i = 0; _i < rings.length; _i++) {
+        var ring = rings[_i];
         ring.update();
     }
 }
