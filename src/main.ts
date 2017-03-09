@@ -64,6 +64,16 @@ function bubbleSort(array){
 	}
 }
 
+function insertionSort(array){
+	for(var i = 1; i < array.length; i++){
+		for(var j = i; j > 0; j--){
+			if(array[j - 1] > array[j]){
+				swap(array, j - 1, j)
+			}else break;
+		}
+	}
+}
+
 function quikSort(array){
     quikSortPr(array,0,array.length - 1)
 }
