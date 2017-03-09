@@ -63,4 +63,43 @@ function partition(array, low, high, pivot) {
     }
     return left;
 }
+function swap(array, a, b) {
+    var temp = array[a];
+    array[a] = array[b];
+    array[b] = temp;
+}
+function _mergeSort(array) {
+    mergeSort(array, 0, array.length, []);
+}
+function mergeSort(array, from, to, temp) {
+    if (to - from < 2)
+        return;
+    var middle = Math.floor((from + to) / 2);
+    mergeSort(array, from, middle, temp);
+    mergeSort(array, middle, to, temp);
+    merge(array, from, middle, to, temp);
+}
+function merge(array, from, middle, end, scratch) {
+    var left = from;
+    var right = middle;
+    var index = left;
+    while (left < middle && right < end) {
+        if (array[left] < array[right]) {
+            scratch[index] = array[left];
+            left++;
+        }
+        else {
+            scratch[index] = array[right];
+            right++;
+        }
+        index++;
+    }
+    copy(array, left, scratch, index, middle - left);
+    copy(array, right, scratch, index, end - right);
+    copy(scratch, from, array, from, end - from);
+}
+function copy(source, srcFrom, dest, destFrom, length) {
+    for (var i = srcFrom; i < srcFrom + length; i++)
+        dest[destFrom++] = source[i];
+}
 //# sourceMappingURL=main.js.map
