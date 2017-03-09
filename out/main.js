@@ -35,7 +35,74 @@ var render = function () {
     renderer.render(scene, camera);
 };
 render();
-quikSort([5, 5, 1, 3, 66, 8, 9, 4, 5, 7, 2, 5, 4, 9]);
+function heapSort(array) {
+    heapify(array);
+    for (var i = 0; i < array.length - 1; i++) {
+        swap(array, 0, array.length - 1 - i);
+        bubbleDown(array, 0, array.length - 1 - i);
+    }
+}
+function heapify(array) {
+    for (var i = 1; i < array.length; i++) {
+        bubbleUp(array, i);
+    }
+}
+function bubbleUp(array, i) {
+    if (i == 0)
+        return;
+    var pa = getParent(i);
+    if (array[i] > array[pa]) {
+        swap(array, i, pa);
+        bubbleUp(array, pa);
+    }
+}
+function bubbleDown(array, i, length) {
+    var bigChild = leftChild(i);
+    if (bigChild >= length)
+        return;
+    var rchild = rightChild(i);
+    if (rchild < length && array[rchild] > array[bigChild])
+        bigChild = rchild;
+    if (array[i] > array[bigChild])
+        return; //if current element is bigger and thus in the right spot, just return
+    else
+        swap(array, i, bigChild);
+    bubbleDown(array, bigChild, length);
+}
+function getParent(i) {
+    return Math.floor((i - 1) / 2);
+}
+function leftChild(i) {
+    return i * 2 + 1;
+}
+function rightChild(i) {
+    return i * 2 + 2;
+}
+function bubbleSort(array) {
+    var swapped = true;
+    var toSort = array.length;
+    while (swapped) {
+        swapped = false;
+        for (var i = 1; i < toSort; i++) {
+            if (array[i - 1] > array[i]) {
+                swap(array, i - 1, i);
+                swapped = true;
+            }
+        }
+        toSort--;
+    }
+}
+function insertionSort(array) {
+    for (var i = 1; i < array.length; i++) {
+        for (var j = i; j > 0; j--) {
+            if (array[j - 1] > array[j]) {
+                swap(array, j - 1, j);
+            }
+            else
+                break;
+        }
+    }
+}
 function quikSort(array) {
     quikSortPr(array, 0, array.length - 1);
 }
