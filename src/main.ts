@@ -46,7 +46,23 @@ var render = function () {
 
 render();
 
-quikSort([5,5,1,3,66,8,9,4,5,7,2,5,4,9])
+// quikSort([5,5,1,3,66,8,9,4,5,7,2,5,4,9])
+
+function bubbleSort(array){
+	var swapped = true
+	var toSort = array.length
+
+	while(swapped){
+		swapped = false
+		for(var i = 1; i < toSort; i++){
+			if(array[i - 1] > array[i]){
+				swap(array,i - 1, i)
+				swapped = true
+			}
+		}
+		toSort--
+	}
+}
 
 function quikSort(array){
     quikSortPr(array,0,array.length - 1)
