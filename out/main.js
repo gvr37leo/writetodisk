@@ -13,15 +13,13 @@ var light = new THREE.PointLight(0xffffff, 1, 100);
 light.position.set(0, -35, 10);
 light.castShadow = true;
 scene.add(light);
-camera.position.z = 20;
-camera.position.y = -50;
-camera.position.x = 0;
+camera.position.set(0, -1, 0.5).multiplyScalar(40);
 camera.up.set(0, 0, 1);
 camera.lookAt(new THREE.Vector3(0, 0, 0));
 var rings = [];
-rings.push(new Ring(50, 30));
-// rings.push(new Ring(80,25))
-// rings.push(new Ring(60,20))
+rings.push(new Ring(25, 20, quikSort));
+rings.push(new Ring(15, 15, insertionSort));
+rings.push(new Ring(15, 10, heapSort));
 function draw() {
     for (var ring of rings)
         ring.update();

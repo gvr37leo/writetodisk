@@ -6,7 +6,8 @@ class Bit{
 
     constructor(pos:THREE.Vector3, val:number, max:number){
         var brightness = val / max
-        this.mesh = new THREE.Mesh( BitGeometry, new THREE.MeshPhongMaterial( { color: new THREE.Color(brightness, brightness, brightness).getHex() } ) );
+        
+        this.mesh = new THREE.Mesh( BitGeometry, new THREE.MeshPhongMaterial( { color: new THREE.Color().setHSL(brightness, 1, 0.5).getHex() } ) );
         this.mesh.position.add(pos);
         scene.add(this.mesh)
     }

@@ -14,13 +14,13 @@ var SwapProgress;
     SwapProgress[SwapProgress["toB2"] = 2] = "toB2";
 })(SwapProgress || (SwapProgress = {}));
 class Ring {
-    constructor(diskSize, radius) {
+    constructor(diskSize, radius, sortingAlgroithm) {
         this.flag = false;
         var values = generateArray(diskSize);
         shuffle(values);
         this.swapIndex = 0;
         this.swaps = [];
-        quikSort(clone(values), this.swaps);
+        sortingAlgroithm(clone(values), this.swaps);
         this.state = State.rolling;
         this.swapProgress = SwapProgress.toB;
         this.bits = [];
@@ -33,7 +33,7 @@ class Ring {
             var bit = new Bit(pos, values[i], diskSize);
             this.bits.push(bit);
         }
-        this.rotationSpeed = 0.01;
+        this.rotationSpeed = 0.05;
         this.currentRotation = 0;
         this.targetRotation = this.spacing * 10;
         this.head = new Head(new THREE.Vector3(0, -radius, 3));
