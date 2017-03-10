@@ -8,5 +8,21 @@ class Head {
         this.mesh.position.add(pos);
         scene.add(this.mesh);
     }
+    read(bit) {
+        this.value = bit.value;
+        this.mesh.material = bit.mesh.material;
+    }
+    write(bit) {
+        bit.value = this.value;
+        bit.mesh.material = this.mesh.material;
+    }
+    swap(bit) {
+        var temp = bit.value;
+        bit.value = this.value;
+        this.value = temp;
+        var tempMaterial = this.mesh.material;
+        this.mesh.material = bit.mesh.material;
+        bit.mesh.material = tempMaterial;
+    }
 }
 //# sourceMappingURL=Head.js.map

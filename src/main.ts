@@ -13,26 +13,21 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-var planeGeometry = new THREE.PlaneGeometry( 20, 20, 10, 10);
-var planeMaterial = new THREE.MeshPhongMaterial( { color: 0x777777, side: THREE.DoubleSide} );
-planeMaterial.shading = THREE.FlatShading
-var floor = new THREE.Mesh( planeGeometry, planeMaterial );
-floor.receiveShadow = true;
-// scene.add( floor );
-
 var light = new THREE.PointLight( 0xffffff, 1, 100 );
 light.position.set( 0, -35, 10 );
 light.castShadow = true;
 scene.add( light );
 
 camera.position.z = 20;
-camera.position.y = -60;
+camera.position.y = -50;
+camera.position.x = 0;
+camera.up.set( 0, 0, 1 );
 camera.lookAt(new THREE.Vector3(0,0,0))
 
 var rings:Ring[] = []
-rings.push(new Ring(100,30))
-rings.push(new Ring(80,25))
-rings.push(new Ring(60,20))
+rings.push(new Ring(50,30))
+// rings.push(new Ring(80,25))
+// rings.push(new Ring(60,20))
 
 function draw(){
     for(var ring of rings)ring.update();
