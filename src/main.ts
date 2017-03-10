@@ -18,14 +18,14 @@ light.position.set( 0, -35, 10 );
 light.castShadow = true;
 scene.add( light );
 
-camera.position.set(0, -1, 0.5).multiplyScalar(40)
+camera.position.set(0, -1, 0.6).multiplyScalar(19)
 camera.up.set( 0, 0, 1 );
 camera.lookAt(new THREE.Vector3(0,0,0))
 
 var rings:Ring[] = []
-rings.push(new Ring(25, 20, quikSort))
-rings.push(new Ring(15, 15, insertionSort))
-rings.push(new Ring(15, 10, heapSort))
+rings.push(new Ring(25, 13, quikSort))
+rings.push(new Ring(15, 10, insertionSort))
+rings.push(new Ring(15, 7, heapSort))
 
 function draw(){
     for(var ring of rings)ring.update();

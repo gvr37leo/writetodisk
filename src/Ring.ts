@@ -55,7 +55,7 @@ class Ring{
     swap(){
         //go to b, store color in head
         //go to a, swap color in a with color in head
-        //go to b, set to color to head(a)
+        //go to b, set to color in head(a)
     }
 
     update(){
@@ -103,7 +103,6 @@ class Ring{
             var y = -( Math.pow(2 * this.writeCompletion - 1, 2)) + 1
             var target = this.head.originalPosition.clone().add(headSinkDepth)
             this.head.mesh.position.lerpVectors(this.head.originalPosition,target,y)
-            
         }
     }
 
