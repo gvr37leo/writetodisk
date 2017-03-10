@@ -38,11 +38,6 @@ class Ring {
         this.targetRotation = this.spacing * 10;
         this.head = new Head(new THREE.Vector3(0, -radius, 3));
     }
-    swap() {
-        //go to b, store color in head
-        //go to a, swap color in a with color in head
-        //go to b, set to color in head(a)
-    }
     update() {
         if (this.state == State.rolling) {
             this.setTargetRotation();

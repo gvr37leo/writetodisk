@@ -15,14 +15,4 @@ class Bit{
     set(value:number){
         this.value = value
     }
-
-    // set(bool:boolean){
-    //     this.state = bool
-    //     this.mesh.material = bitMaterialMap.get(this.state)
-    // }
-
-    // toggle(){
-    //     this.state = !this.state
-    //     this.mesh.material = bitMaterialMap.get(this.state)
-    // }
 }
